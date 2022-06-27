@@ -3,7 +3,7 @@ Built with Laravel, Inertiajs/Vue3 and Tailwind.
 
 
 ## Installation
-Clone the repository, 
+Clone the repository
 
 ```
 git clone https://github.com/Almusamim/ticketing-system
@@ -13,20 +13,30 @@ Install the dependencies
 ```
 composer install
 ```
-```
-npm install
-```
+
 
 setup your .env file
 ```
 cp .env.example .env
 ```
 
+
 Run the initial migrations & seeders.
 ```
 php artisan migrate --seed
 ```
 
+generate key
+```
+php artisan key:generate
+```
+
+
+Lastly
+```
+npm install 
+npm run dev
+```
 
 ##
 

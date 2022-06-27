@@ -5,25 +5,34 @@ import { PlusSmIcon } from '@heroicons/vue/solid'
 
 let form = useForm({
     body: '',
-    ticketId: props.ticketId
-
+    ticket_id: props.ticketId
 });
+
+const props = defineProps({
+    data: {
+        type: Array
+    },
+    ticketId: {
+        type: [String, Number]
+    },
+})
 
 let submit = () => {
     form.post('/comment', {
         preserveScroll: false,
-        onSuccess: () => form.reset('body'),
-        // TODO
-        // window.scrollTo(0, bottom),
+        onSuccess: () => { 
+            form.reset('body')
+            scrollToView()
+        },
     });
 };
 
-const props =defineProps({
-    data: {
-        type: Array
-    },
-    ticketId: String,
-})
+const scrollToView = () => {
+    document.querySelector('#comment').scrollIntoView({ 
+        behavior: "smooth",
+        block: "end" 
+    });
+};
 </script>
 
 <template>
@@ -54,7 +63,12 @@ const props =defineProps({
             rows="3"
             placeholder="Your comment here..."
         ></textarea>
-        <LoadingButton typeof="submit" :disabled="form.processing">
+        
+        <div class="text-red-500 text-left -mt-3 mb-2 ml-2" v-if="form.errors.body">
+            {{ form.errors.body.replace('body', "comment") }}
+        </div>
+        
+        <LoadingButton typeof="submit" :disabled="form.processing" >
             Submit
         </LoadingButton>
     </form>

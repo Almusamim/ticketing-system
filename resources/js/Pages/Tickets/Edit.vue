@@ -19,16 +19,18 @@ const form = useForm({
     _method: 'put'
 })
 
-function update() {
-    Inertia.post(`/tickets/${props.ticket.id}`, form)
-}
+let update = () => {
+    form.post(`/tickets/${props.ticket.id}`, {
+        preserveScroll: true,
+        onSuccess: () => form.reset('media'),
+    });
+};
 
-// TODO
-function destroy() {
+let destroy = () => {
     if (confirm('Are you sure you want to delete this ticket?')) {
-        Inertia.delete(`/tickets/${props.ticket.id}`)
+        form.delete(`/tickets/${props.ticket.id}`);
     }
-}
+};
 
 function deleteMedia(mediaId) {
     if (confirm('Are you sure you want to delete this file?')) {
@@ -104,9 +106,9 @@ function deleteMedia(mediaId) {
                                 class="px-3 py-2 flex justify-between border-b border-gray-300 w-full text-gray-500 text-sm"
                             >
                                 <a :href="file.original_url" class="flex hover:text-brand-400" download>
-                                    <img v-if="file.mime_type.startsWith('image')" :src="file.thumb_url" :alt="file.file_name" class="rounded mr-2">
+                                    <img v-if="file.mime_type.startsWith('image')" :src="file.thumb_url" :alt="file.file_name" class="rounded mr-2 H">
                                     <DocumentDuplicateIcon v-else class="w-4 h-4 mr-2" />
-                                    {{ file.file_name }}
+                                    {{ file.file_name.slice(0, 26) }}
                                 </a> 
 
                                 <div @click="deleteMedia(file.id)" class="flex text-red-100 hover:text-red-500" style="cursor: pointer;" download>
@@ -119,9 +121,12 @@ function deleteMedia(mediaId) {
             </div>
 
             <div class="w-full flex justify-end">
-                <LoadingButton :loading="form.processing" class="btn-brand" type="submit">
-                    Update Ticket
+                <LoadingButton :loading="form.processing" type="submit">
+                    Update
                 </LoadingButton>
+                <button class="ml-1 p-2 bg-gray-400 text-white rounded hover:bg-red-500" tabindex="-1" type="button" @click="destroy">
+                    Delete Ticket
+                </button>
             </div>
         </form>
 

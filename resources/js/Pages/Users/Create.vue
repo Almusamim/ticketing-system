@@ -1,3 +1,4 @@
+
 <script setup>
 import Layout  from "@/Shared/Layout"
 </script>
@@ -6,11 +7,8 @@ import Layout  from "@/Shared/Layout"
 <Head Title="Users" />
 <Layout>
     <template #header>
-        <h1 class="text-3xl font-bold text-brand-900">Dashboard</h1>
+        <h1>Users</h1>
     </template>
-
-    TODO: Dashboard
-    
     <!-- <template #footer></template> -->
 </Layout>
 </template>

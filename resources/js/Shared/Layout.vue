@@ -1,38 +1,44 @@
-<template>
-    <nav class="bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <Logo />
-                    </div>
-                    <div class="hidden md:block">
-                        
-                        <div class="ml-10 flex items-baseline space-x-4">
-                            
-                            <Link aria-current="page" href="/"
-                                class="bg-gray-900 text-white router-link-exact-active px-3 py-2 rounded-md text-sm font-medium">
-                                Dashboard
-                            </Link>
-                            <Link href="/tickets"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                Tickets
-                            </Link>
-                        </div>
+<script setup>
+import FlashMessage from '@/Shared/FlashMessage'
+import Nav  from "@/Shared/Nav";
+</script>
 
+<template>
+    <FlashMessage />
+    <Nav />
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <slot name="header"></slot>
+        </div>
+    </header>
+
+    <main>
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="px-4 sm:px-0">
+                <div :class="!$slots.dataTable && 'animate-fade-in-down' ">
+                    <div class="shadow-md sm:rounded-md sm:overflow-hidden">
+                        <div class="bg-white space-y-6" :class="!$slots.dataTable && 'px-4 py-5 sm:p-6'">
+                            <slot></slot>
+                            <template v-if="$slots.dataTable">
+                                <slot name="dataTable"></slot>
+                            </template>
+                        </div>
+                        <div class="px-4 py-3 bg-gray-50 text-right sm:px-6" v-if="$slots.footer">
+                            <slot name="footer"></slot>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </nav>
-    <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
-        </div>
-    </header>
-    <slot />
+    </main>
+
+
 </template>
 
-<script setup>
-import Logo  from "@/Shared/Logo";
-</script>
+<style lang="postcss">
+
+body {
+    @apply bg-gray-100;
+}
+
+</style>

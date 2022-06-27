@@ -2,13 +2,16 @@ import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
 import { Head, Link } from '@inertiajs/inertia-vue3'
-import Layout from '@/Shared/Layout'
+// import Layout from '@/Shared/Layout'
 
 createInertiaApp({
     resolve: async name => {
         let page = (await import(`./Pages/${name}`)).default;
 
-        page.layout ??= Layout;
+        // if (page.layout === undefined) {
+        //     page.layout = Layout;
+        // }
+
         return page;
     },
     title: title => title ? `${title} - Ticketing System` : 'Ticketing System',
@@ -23,7 +26,7 @@ createInertiaApp({
 
 InertiaProgress.init({
     delay: 250,
-    color: 'red',
+    color: 'black',
     includeCSS: true,
     showSpinner: true,
 })

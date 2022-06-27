@@ -54,10 +54,10 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'name' => ['required'],
-            'email' => ['required|email'],
-            'is_admin' => ['required|boolean'],
-            'password' => ['required'],
+            'name' => 'required',
+            'email' => 'required|email',
+            'is_admin' => 'required|boolean',
+            'password' => 'required',
         ]);
 
         $user = User::create($attributes);
@@ -91,10 +91,10 @@ class UsersController extends Controller
             'email' => 'required|max:50|email|unique:users,email,'.$user->id,
             'password' => 'nullable',
             'is_admin' => 'required|boolean',
-            'avatar' => 'nullable',
+            'avatar.*' => 'nullable|image'
         ]);
         
-        $user->update( $request->only('name', 'email', 'is_admin'));
+        $user->update($request->only('name', 'email', 'is_admin'));
 
         if ($request->file('avatar')) {
             $avatars = $request->file('avatar');
@@ -114,11 +114,5 @@ class UsersController extends Controller
     {
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User deleted.');
-    }
-
-    public function restore(User $user)
-    {
-        $user->restore();
-        return redirect()->back()->with('success', 'User restored.');
     }
 }

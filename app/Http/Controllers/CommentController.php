@@ -14,13 +14,18 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-        $comment = Comment::create([
-            'user_id' => auth()->user()->id,
-            'ticket_id' => $request->ticketId,
-            'body' => request('body'),
+        $request->merge([
+            'user_id' => auth()->user()->id
         ]);
+
+        $attributes = $request->validate([
+            'user_id' => ['required'],
+            'ticket_id' => ['required'],
+            'body' => ['required'],
+        ]);
+
+        $comment = Comment::create($attributes);
 
         return redirect()->back()->with('success', 'Comment posted.');
     }
-
 }

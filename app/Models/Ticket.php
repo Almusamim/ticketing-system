@@ -15,12 +15,13 @@ class Ticket extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    // protected $fillable = [
-    //     'title',
-    //     'body',
-    // ];
-    protected $guarded = [];
-
+    protected $fillable = [
+        'title',
+        'body',
+        'status',
+        'user_id',
+    ];
+    
     protected $casts = [
         'status' => 'boolean',
     ];

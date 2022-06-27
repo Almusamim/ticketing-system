@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
     Route::get('tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
     Route::put('tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
+    Route::delete('tickets/{ticket}', [TicketController::class, 'destroy'])->name('tickets.destroy');
 
     Route::get('/comment/create', [CommentController::class, 'create'])->name('comment.create');
     Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
@@ -40,7 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::get('users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
     Route::put('users/{user}', [UsersController::class, 'update'])->name('users.update');
     Route::delete('users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
-    Route::put('users/{user}/restore', [UsersController::class, 'restore'])->name('users.restore');
     
      Route::get('media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
 });

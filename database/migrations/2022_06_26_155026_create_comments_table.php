@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+use App\Models\Ticket;
 
 return new class extends Migration
 {
@@ -13,16 +15,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->boolean('is_admin')->default(false);
-            $table->rememberToken();
+            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Ticket::class);
+            $table->text('body');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('comments');
     }
 };

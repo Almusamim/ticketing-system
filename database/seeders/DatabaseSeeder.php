@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        User::factory(1)->create()->each(function($user) {
+        User::factory(5)->create()->each(function($user) {
             $ticket = Ticket::factory(rand(1, 3))->create([
                 'user_id' => $user->id
             ])->each(function($user, $ticket) {

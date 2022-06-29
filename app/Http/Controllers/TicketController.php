@@ -41,7 +41,7 @@ class TicketController extends Controller
                     'actions' => [
                         // TODO:
                         // 'edit' => auth()->user()->can('edit', $ticket),
-                        'edit' => auth()->user()->is_admin
+                        'edit' => auth()->user()->is_admin || auth()->user()->id == $ticket->user->id
                     ]
                 ]),
 
@@ -69,7 +69,7 @@ class TicketController extends Controller
 
         self::uploadMedia($ticket, $request->file('media'));
 
-        return redirect('/tickets')->with('success', 'Ticket created.');;
+        return redirect()->route('tickets.edit', $ticket->id)->with('success', 'Ticket created.');
     }
 
     public function edit(Ticket $ticket)

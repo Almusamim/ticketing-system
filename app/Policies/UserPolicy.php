@@ -12,7 +12,6 @@ class UserPolicy
 
     public function create(User $user)
     {
-        // return $user->email === 'admin@mail.com';
         return $user->is_admin === true;
     }
 
@@ -22,15 +21,12 @@ class UserPolicy
         if ($user->is_admin === true) {
             return true;
         }
+
         return false;
     }
 
-    // function owner(User $user, User $model)
-    // {
-    //     if ($user->id == Auth::user()->id) {
-    //         return true;
-    //     }
-
-    //     return false;
-    // }
+    public function update(User $user, User $model)
+    {
+        return $user->id === $model->id;
+    }
 }

@@ -34,14 +34,14 @@ class UsersController extends Controller
                     'is_admin' => $user->is_admin,
                     'is_owner' => Auth::user()->id == $user->id,
                     'actions' => [
-                        //'edit' => Auth::user()->can('edit', $user),
+                        'edit' => Auth::user()->can('update', $user),
                     ]
                 ]),
 
             'filters' => $request->only(['search', 'sortby', 'direction']),
             'can' => [
-                'create' => Auth::user()->can('create', User::class),
-                'edit' => Auth::user()->can('edit', User::class),
+                'createUser' => Auth::user()->can('create', User::class),
+                'editUser' => Auth::user()->can('edit', User::class),
             ]
         ]);
     }
@@ -66,7 +66,7 @@ class UsersController extends Controller
             $user->addMedia($request->file('avatar'))->toMediaCollection('avatar');
         }
 
-        return redirect('/users')->with('success', 'User created.');;
+        return redirect()->route('users.edit', $user->id)->with('success', 'User created.');
     }
 
 

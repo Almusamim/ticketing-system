@@ -1,7 +1,6 @@
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3'
 import { Inertia } from '@inertiajs/inertia'
-import Layout  from "@/Shared/Layout"
 import BaseInput from '@/Shared/Form/BaseInput'
 import LoadingButton from '@/Shared/Form/LoadingButton'
 
@@ -31,13 +30,7 @@ function destroy() {
     }
 }
 
-// TODO
-function restore() {
-    if (confirm('Are you sure you want to restore this user?')) {
-        Inertia.put(`/users/${props.user.id}/restore`)
-    }
-}
-
+//TODO
 function deleteMedia(mediaId) {
     if (confirm('Are you sure you want to delete this file?')) {
         Inertia.get(`/media/${props.user.id}`, mediaId, { preserveState: true });
@@ -48,7 +41,7 @@ function deleteMedia(mediaId) {
 
 <template>
 <Head :title="`${form.name}`" />
-<Layout>
+<Container>
 
     <template #header>
         <div class="flex justify-between relative">
@@ -79,16 +72,6 @@ function deleteMedia(mediaId) {
                     class="pb-8 pr-6 w-full lg:w-1/2" type="password" autocomplete="new-password"
                     label="Password" />
 
-
-                <!-- TODO -->
-                <!-- <FileInput 
-                    v-model="form.avatar"
-                    :error="errors.avatar"
-                    class="pb-8 pr-6 w-full lg:w-1/2"
-                    type="file" accept="image/*"
-                    label="avatar"
-                /> -->
-
                 <input type="file" @input="form.avatar = $event.target.files" accept="image/*" />
                 <progress v-if="form.progress" :value="form.progress.percentage" max="100">
                     {{ form.progress.percentage }}%
@@ -110,7 +93,7 @@ function deleteMedia(mediaId) {
         </div>
     </template>
 
-</Layout>
+</Container>
 </template>
 
 

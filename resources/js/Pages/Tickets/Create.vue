@@ -1,6 +1,5 @@
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3'
-import Layout  from '@/Shared/Layout'
 import LoadingButton from '@/Shared/Form/LoadingButton'
 import TextInput from '@/Shared/Form/TextInput'
 
@@ -18,7 +17,7 @@ let submit = () => {
 
 <template>
     <Head title="Create Ticket" />
-    <Layout>
+    <Container>
 
         <template #header>
             <div class="flex justify-between relative">
@@ -91,7 +90,7 @@ let submit = () => {
         <template #footer>
         </template>
 
-    </Layout>
+    </Container>
 </template>
 
 

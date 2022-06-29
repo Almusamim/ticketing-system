@@ -6,44 +6,36 @@ import Layout  from '@/Shared/Layout'
 import Pagination from '@/Shared/Pagination'
 import DataTable from '@/Shared/DataTable/List'
 import LoadingButton from '@/Shared/Form/LoadingButton'
-
 // TODO: move Datatable logic into its own component
 let props = defineProps({
     tickets: Object,
     filters: Object,
     can: Object
 });
-
 let params = reactive({ 
     search: props.filters.search,
     sortby: props.filters.sortby,
     direction: props.filters.direction
 })
-
 watch(params, debounce(function () {
     Object.keys(params).forEach((name, key) => {
-        // let ms = name != 'search' ? 0 : 300;
-        // console.log(ms)
-        if(params[key] == '')
+        if(params[name] == '')
         {
-            delete params[key];
+            delete params[name];
         }
     })
-
     Inertia.get('/tickets', params, { preserveState: true, replace: true });
 }, 300))
-
 
 function sortTable(field) {
     params.sortby = field;
     params.direction = params.direction === 'asc' ? 'desc' : 'asc';
 }
-
 </script>
 
 <template>
-<Layout>
-    <Head Title="Tickets" />
+<Head title="Tickets" />
+<Container>
     <template #header>
         <div class="flex justify-between">
             <input v-model="params.search" type="text" placeholder="Search..." class="border px-6 py-3 rounded-lg" />
@@ -74,5 +66,5 @@ function sortTable(field) {
             </div>
         </div>
     </template>
-</Layout>
+</Container>
 </template>

@@ -2,7 +2,6 @@
 import { Inertia } from '@inertiajs/inertia'
 import { useForm } from '@inertiajs/inertia-vue3'
 import { TrashIcon, DocumentDuplicateIcon } from '@heroicons/vue/solid'
-import Layout  from '@/Shared/Layout'
 import LoadingButton from '@/Shared/Form/LoadingButton'
 import Comment from '@/Shared/Comment'
 import TextInput from '@/Shared/Form/TextInput'
@@ -41,8 +40,8 @@ function deleteMedia(mediaId) {
 </script>
 
 <template>
-    <Head title="Create Ticket" />
-    <Layout>
+    <Head title="Edit Ticket" />
+    <Container>
 
         <template #header>
             <div class="flex justify-between relative">
@@ -134,7 +133,7 @@ function deleteMedia(mediaId) {
             <Comment :data="ticket.comments" :ticketId="ticket.id"  />
         </template>
 
-    </Layout>
+    </Container>
 </template>
 
 

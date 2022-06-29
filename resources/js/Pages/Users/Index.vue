@@ -2,7 +2,6 @@
 import { Inertia } from '@inertiajs/inertia';
 import { reactive, watch } from 'vue';
 import debounce from 'lodash/debounce'
-import Layout  from '@/Shared/Layout'
 import Pagination from '@/Shared/Pagination'
 import DataTable from '@/Shared/DataTable/List'
 
@@ -41,8 +40,8 @@ function sortTable(field) {
 </script>
 
 <template>
-<Layout>
-    <Head Title="Users" />
+<Head title="Users" />
+<Container>
     <template #header>
         <div class="flex justify-between">
             <input v-model="params.search" type="text" placeholder="Search..." class="border px-6 py-3 rounded-lg" />
@@ -73,5 +72,5 @@ function sortTable(field) {
             </div>
         </div>
     </template>
-</Layout>
+</Container>
 </template>

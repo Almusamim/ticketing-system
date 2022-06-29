@@ -1,10 +1,6 @@
-<script setup>
-import Layout  from "@/Shared/Layout"
-</script>
-
 <template>
-<Head Title="Users" />
-<Layout>
+<Head title="Dashboard" />
+<Container>
     <template #header>
         <h1 class="text-3xl font-bold text-brand-900">Dashboard</h1>
     </template>
@@ -12,5 +8,5 @@ import Layout  from "@/Shared/Layout"
     TODO: Dashboard
     
     <!-- <template #footer></template> -->
-</Layout>
+</Container>
 </template>

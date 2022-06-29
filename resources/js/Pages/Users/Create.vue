@@ -1,14 +1,10 @@
 
-<script setup>
-import Layout  from "@/Shared/Layout"
-</script>
-
 <template>
-<Head Title="Users" />
-<Layout>
+<Head title="Create User" />
+<Container>
     <template #header>
         <h1>Users</h1>
     </template>
     <!-- <template #footer></template> -->
-</Layout>
+</Container>
 </template>

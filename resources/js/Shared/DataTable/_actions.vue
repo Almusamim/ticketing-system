@@ -7,7 +7,7 @@ defineProps({
     },
      can: {
         type: Object,
-        required: true
+        // required: true
     },
     editLink: {
         type: String
@@ -17,7 +17,7 @@ defineProps({
 
 <template>
 <div class="flex justify-end">
-    <Link :href="`/${editLink}/${data.id}/edit`" v-if="data.is_owner || can.edit ">
+    <Link :href="`/${editLink}/${data.id}/edit`" v-if="data.is_owner || data.actions.edit">
         <span>Edit</span>
         <PencilAltIcon class="icon-size" />
     </Link>

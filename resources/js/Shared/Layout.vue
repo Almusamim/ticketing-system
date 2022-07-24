@@ -1,6 +1,6 @@
 <script setup>
-import FlashMessage from '@/Shared/FlashMessage'
-import Nav  from "@/Shared/Nav";
+import FlashMessage from '@/Shared/FlashMessage.vue'
+import Nav  from "@/Shared/Nav.vue";
 </script>
 
 <template>

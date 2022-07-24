@@ -2,9 +2,9 @@
 import { Inertia } from '@inertiajs/inertia'
 import { useForm } from '@inertiajs/inertia-vue3'
 import { TrashIcon, DocumentDuplicateIcon } from '@heroicons/vue/solid'
-import LoadingButton from '@/Shared/Form/LoadingButton'
-import Comment from '@/Shared/Comment'
-import TextInput from '@/Shared/Form/TextInput'
+import LoadingButton from '@/Shared/Form/LoadingButton.vue'
+import Comment from '@/Shared/Comment.vue'
+import TextInput from '@/Shared/Form/TextInput.vue'
 
 let props = defineProps({
     ticket: Object,

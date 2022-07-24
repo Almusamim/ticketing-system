@@ -1,7 +1,7 @@
 <script setup>
 import { SortAscendingIcon, SortDescendingIcon } from '@heroicons/vue/solid'
-import Avatar from '@/Shared/DataTable/_avatar'
-import Action from '@/Shared/DataTable/_actions'
+import Avatar from '@/Shared/DataTable/_avatar.vue'
+import Action from '@/Shared/DataTable/_actions.vue'
 
 import { Inertia } from '@inertiajs/inertia';
 import { reactive, watch } from 'vue';

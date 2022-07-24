@@ -1,7 +1,7 @@
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3'
-import LoadingButton from '@/Shared/Form/LoadingButton'
-import TextInput from '@/Shared/Form/TextInput'
+import LoadingButton from '@/Shared/Form/LoadingButton.vue'
+import TextInput from '@/Shared/Form/TextInput.vue'
 
 let form = useForm({
     title: '',

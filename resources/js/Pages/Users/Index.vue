@@ -1,6 +1,6 @@
 <script setup>
-import Pagination from '@/Shared/Pagination'
-import DataTable from '@/Shared/DataTable/List'
+import Pagination from '@/Shared/Pagination.vue'
+import DataTable from '@/Shared/DataTable/List.vue'
 
 defineProps({
     users: Object,

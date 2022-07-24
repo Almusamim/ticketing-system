@@ -1,8 +1,8 @@
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3'
 import { Inertia } from '@inertiajs/inertia'
-import BaseInput from '@/Shared/Form/BaseInput'
-import LoadingButton from '@/Shared/Form/LoadingButton'
+import BaseInput from '@/Shared/Form/BaseInput.vue'
+import LoadingButton from '@/Shared/Form/LoadingButton.vue'
 
 let props = defineProps({
     user: Object,

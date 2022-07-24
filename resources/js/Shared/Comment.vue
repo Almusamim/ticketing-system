@@ -1,6 +1,6 @@
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3'
-import LoadingButton from '@/Shared/Form/LoadingButton'
+import LoadingButton from '@/Shared/Form/LoadingButton.vue'
 import { PlusSmIcon } from '@heroicons/vue/solid'
 
 let form = useForm({
